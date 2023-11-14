@@ -1,0 +1,25 @@
+{% if categories %}
+<div class="category-module">
+    {% for category in categories %}
+    <div class="category">
+		<img src="{{ category.thumb }}" alt="{{ category.name }}" title="{{ category.name }}" class="img-responsive">
+        <h3>{{ category.name }}</h3>
+        <ul>
+            {% for subcategory in category.subcategories|slice(0, 3) %}
+            <li><a href="{{ subcategory.href }}">{{ subcategory.name }}</a></li>
+            {% endfor %}
+        </ul>
+    </div>
+    {% endfor %}
+</div>
+{% endif %}
+
+<style>
+	.category-module {
+		display: flex;
+		flex-wrap: wrap;
+		margin-left: -15px;
+		margin-right: -15px;
+		margin-top: -25px;
+	}
+</style>
